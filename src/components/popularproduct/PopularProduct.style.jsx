@@ -27,8 +27,7 @@ export const Container = styled.div`
 
   &:hover ${Info} {
     opacity: 1;
-    transition:all 0.8
-    s ease-in-out;
+    transition:all 0.8s ease-in-out;
   }
 `;
 
