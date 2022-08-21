@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { sm } from "../../responsive";
 
 export const Container = styled.div`
   width: 100%;
@@ -6,6 +7,7 @@ export const Container = styled.div`
   display: flex;
   position: relative;
   overflow: hidden;
+  ${sm({display:"none"})}
 `;
 
 export const Arrow = styled.div`

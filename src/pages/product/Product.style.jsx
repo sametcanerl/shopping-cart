@@ -1,9 +1,13 @@
 import styled from "styled-components";
+import { sm } from "../../responsive";
 
-export const Container = styled.div``;
+export const Container = styled.div`
+ ${sm({marginTop:"10px"})}
+`;
 export const Wrapper = styled.div`
   padding: 50px;
   display: flex;
+  ${sm({padding:"10px",flexDirection:"column"})}
 `;
 export const ImgContainer = styled.div`
   flex: 1;
@@ -11,6 +15,7 @@ export const ImgContainer = styled.div`
 export const InfoContainer = styled.div`
   flex: 1;
   padding: 0px 50px;
+  ${sm({padding:"10px"})}
 `;
 
 export const Title = styled.h1`
@@ -27,12 +32,14 @@ export const Image = styled.img`
   width: 100%;
   height: 90vh;
   object-fit: cover;
+  ${sm({height:"40vh"})}
 `;
 export const FilterContainer = styled.div`
   width: 50%;
   margin:30px 0px;
   display: flex;
   justify-content: space-between;
+  ${sm({width:"100%"})}
 `;
 export const Filter = styled.div`
     display:flex;
@@ -60,11 +67,14 @@ width:50%;
 display:flex;
 align-items:center;
 justify-content:space-between;
+${sm({flexDirection:"column",width:"100%"})}
 `;
 export const AmountContainer = styled.div`
 display:flex;
 font-weight: 700;
 align-items:center;
+${sm({justifyContent:"center"})}
+
 `;
 export const Amount = styled.span`
 width: 30px;
@@ -75,6 +85,7 @@ display:flex;
 align-items:center;
 justify-content:center;
 margin:0px 5px;
+
 `;
 export const Button = styled.button`
 padding: 15px;
@@ -82,6 +93,7 @@ border:1px solid teal;
 background-color:white;
 cursor: pointer;
 font-weight: 400;
+${sm({width:"75%",marginTop:"10px"})}
 &:hover{
     background-color:#f8f4f4
 }

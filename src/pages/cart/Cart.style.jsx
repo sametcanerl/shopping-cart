@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { sm } from "../../responsive";
 
 export const Container = styled.div`
     
@@ -6,6 +7,7 @@ export const Container = styled.div`
 
 export const Wrapper = styled.div`
     padding:20px;
+    ${sm({padding:"10px"})}
 `
 export const Title = styled.h1`
    font-weight: 300;
@@ -27,7 +29,9 @@ export const TopButton = styled.button`
     color:${props=>props.type ==="filled" && "white"};
     
 `
-export const TopTexts = styled.div` `
+export const TopTexts = styled.div`
+ ${sm({display:"none"})}
+`
 export const TopText = styled.span`
 text-decoration:underline;
 cursor: pointer;
@@ -36,6 +40,7 @@ margin:0px 10px;
 export const Bottom = styled.div`
     display:flex;
     justify-content:space-between;
+    ${sm({flexDirection:"column"})}
 `
 export const Info = styled.div`
     flex:3;
@@ -74,6 +79,7 @@ font-weight: 600;
 export const Product = styled.div`
 display:flex;
 justify-content:space-between;
+${sm({flexDirection:"column"})}
 `
 export const ProductDetail = styled.div` 
 flex:2;
@@ -114,8 +120,10 @@ margin-bottom: 20px;
 export const ProductAmount = styled.div`
 font-size:24px;
 margin: 5px;
+${sm({margin:"5px 15px"})}
 `
 export const ProductPrice = styled.div`
 font-size: 30px;
 font-weight: 200;
+${sm({marginBottom:"20px"})}
 `

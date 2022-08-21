@@ -13,7 +13,7 @@ import {
 const ProductList = () => {
   return (
     <Container>
-      <Navbar />
+    
       <Title>Dresses</Title>
       <FilterContainer>
         <Filter>
