@@ -7,7 +7,7 @@ export const Container = styled.div`
   display: flex;
   position: relative;
   overflow: hidden;
-  ${sm({display:"none"})}
+  ${sm({ display: "none" })}
 `;
 
 export const Arrow = styled.div`
@@ -44,6 +44,7 @@ export const Slide = styled.div`
 `;
 export const ImgContainer = styled.div`
   height: 100%;
+  width: 500px;
   flex: 1;
 `;
 export const Image = styled.img`

@@ -20,6 +20,7 @@ import {
 
 
 const Navbar = () => {
+
   return (
     <Container>
       <Wrapper>
@@ -31,12 +32,12 @@ const Navbar = () => {
           </SearchContainer>
         </Left>
         <Center>
-          <Logo>SAMET</Logo>
+          <Logo to="/" >SAMET</Logo>
         </Center>
         <Right>
-          <MenuItem>REGİSTER</MenuItem>
-          <MenuItem>SIGN IN</MenuItem>
-          <MenuItem>
+          <MenuItem to="/register" >REGİSTER</MenuItem>
+          <MenuItem to="/login">SIGN IN</MenuItem>
+          <MenuItem to="/cart">
             <Badge badgeContent={4} color="primary">
               <ShoppingCartOutlined />
             </Badge>

@@ -16,9 +16,11 @@ import {
 } from "@material-ui/icons";
 import { useState } from "react";
 import { sliderItems } from "../../data";
+import {useNavigate} from "react-router-dom"
 
 const Slider = () => {
   const [slideIndex, setSlideIndex] = useState(0);
+  const navigate = useNavigate()
   const handleClick = (direction) => {
     if(direction==="left"){
         setSlideIndex(slideIndex > 0 ? slideIndex -1 : sliderItems.length-1 )
@@ -44,7 +46,7 @@ const Slider = () => {
                 <Desc>
                   {desc}
                 </Desc>
-                <Button>button</Button>
+                <Button onClick={()=>navigate("/comingsoon")} >SHOP NOW</Button>
               </InfoContainer>
             </Slide>
           );

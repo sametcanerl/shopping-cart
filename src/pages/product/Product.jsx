@@ -20,13 +20,15 @@ import {
   Title,
   Wrapper,
 } from "./Product.style";
-
+import {useLocation} from "react-router-dom"
 const Product = () => {
+  const {state} = useLocation()
+
   return (
     <Container>
       <Wrapper>
         <ImgContainer>
-          <Image src="https://i.ibb.co/S6qMxwr/jean.jpg" />
+          <Image src={state}/>
         </ImgContainer>
         <InfoContainer>
           <Title>Lorem, ipsum.</Title>
