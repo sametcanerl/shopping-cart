@@ -9,6 +9,8 @@ import {
   Desc,
   Filter,
   FilterColor,
+  FilterColorLabel,
+  FilterColorOption,
   FilterContainer,
   FilterSize,
   FilterSizeOption,
@@ -20,15 +22,24 @@ import {
   Title,
   Wrapper,
 } from "./Product.style";
-import {useLocation} from "react-router-dom"
+import { useLocation } from "react-router-dom";
+import { useState } from "react";
 const Product = () => {
-  const {state} = useLocation()
-
+  const { state } = useLocation();
+  const [filter, setFilter] = useState({});
+  const handleFilters = (e) => {
+    const { name, value } = e.target;
+    setFilter({
+      ...filter,
+      [name]: value,
+    });
+  };
+  console.log(filter);
   return (
     <Container>
       <Wrapper>
         <ImgContainer>
-          <Image src={state}/>
+          <Image src={state} />
         </ImgContainer>
         <InfoContainer>
           <Title>Lorem, ipsum.</Title>
@@ -38,15 +49,37 @@ const Product = () => {
           </Desc>
           <Price>20 $ </Price>
           <FilterContainer>
-            <Filter>
+            <Filter name="color" onChange={handleFilters}>
               <FilterTitle>Color:</FilterTitle>
-              <FilterColor color="black" />
-              <FilterColor color="darkblue" />
-              <FilterColor color="gray" />
+
+              <FilterColor
+                name="color"
+                type="radio"
+                id="Black"
+                value="Black"
+                hidden
+              />
+              <FilterColor
+                name="color"
+                type="radio"
+                id="DarkBlue"
+                value="DarkBlue"
+                hidden
+              />
+              <FilterColor
+                name="color"
+                type="radio"
+                id="Red"
+                value="Red"
+                hidden
+              />
+              <FilterColorLabel htmlFor="Black"></FilterColorLabel>
+              <FilterColorLabel htmlFor="DarkBlue"></FilterColorLabel>
+              <FilterColorLabel htmlFor="Red"> </FilterColorLabel>
             </Filter>
             <Filter>
               <FilterTitle>Size:</FilterTitle>
-              <FilterSize>
+              <FilterSize name="size" onChange={handleFilters}>
                 <FilterSizeOption>XS</FilterSizeOption>
                 <FilterSizeOption>S</FilterSizeOption>
                 <FilterSizeOption>M</FilterSizeOption>
