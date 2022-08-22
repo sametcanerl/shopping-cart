@@ -73,7 +73,6 @@ export const AmountContainer = styled.div`
 display:flex;
 font-weight: 700;
 align-items:center;
-cursor: pointer;
 ${sm({justifyContent:"center"})}
 
 `;

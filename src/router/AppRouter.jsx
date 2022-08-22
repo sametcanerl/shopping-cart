@@ -8,25 +8,20 @@ import Login from "../pages/login/Login";
 import Product from "../pages/product/Product";
 import Register from "../pages/register/Register";
 
-
 const AppRouter = () => {
-
   return (
-    
-      <BrowserRouter>
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/comingsoon" element={<ComingSoon />} />
-
-          <Route path="/product" element={<Product />} />
-        </Routes>
-        <Footer />
-      </BrowserRouter>
-   
+    <BrowserRouter>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home/>} />
+        <Route path="/register" element={<Register/>} />
+        <Route path="/login" element={<Login/>} />
+        <Route path="/cart" element={<Cart/>} />
+        <Route path="/comingsoon" element={<ComingSoon/>} />
+        <Route path="/product" element={<Product/>} />
+      </Routes>
+      <Footer />
+    </BrowserRouter>
   );
 };
 

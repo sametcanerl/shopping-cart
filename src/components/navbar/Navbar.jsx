@@ -15,12 +15,11 @@ import {
   Logo,
   MenuItem,
 } from "./Navbar.style";
-import { useSelector } from "react-redux";
+
 
 
 
 const Navbar = () => {
-  const counter = useSelector((state) => state.productCounterReducer.counter);
 
   return (
     <Container>
@@ -39,7 +38,7 @@ const Navbar = () => {
           <MenuItem to="/register" >REGİSTER</MenuItem>
           <MenuItem to="/login">SIGN IN</MenuItem>
           <MenuItem to="/cart">
-            <Badge badgeContent={counter} color="primary">
+            <Badge badgeContent={4} color="primary">
               <ShoppingCartOutlined />
             </Badge>
           </MenuItem>
