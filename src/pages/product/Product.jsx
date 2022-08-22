@@ -1,4 +1,3 @@
-import Navbar from "../../components/navbar/Navbar";
 import { Remove, Add } from "@material-ui/icons";
 import {
   AddContainer,
@@ -20,15 +19,25 @@ import {
   Title,
   Wrapper,
 } from "./Product.style";
-import {useLocation} from "react-router-dom"
+import { useLocation, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  decrement,
+  increment,
+} from "../../redux/actions/ProductCounterActions";
+import { addCart } from "../../redux/actions/cartActions";
+
 const Product = () => {
-  const {state} = useLocation()
+  const { state } = useLocation();
+  const dispatch = useDispatch();
+  const counter = useSelector((state) => state.productCounterReducer.counter);
+  const navigate = useNavigate();
 
   return (
     <Container>
       <Wrapper>
         <ImgContainer>
-          <Image src={state}/>
+          <Image src={state.img} />
         </ImgContainer>
         <InfoContainer>
           <Title>Lorem, ipsum.</Title>
@@ -36,7 +45,7 @@ const Product = () => {
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae,
             vero.
           </Desc>
-          <Price>20 $ </Price>
+          <Price>{counter * 20} $ </Price>
           <FilterContainer>
             <Filter>
               <FilterTitle>Color:</FilterTitle>
@@ -57,11 +66,22 @@ const Product = () => {
           </FilterContainer>
           <AddContainer>
             <AmountContainer>
-              <Remove />
-              <Amount>1</Amount>
-              <Add />
+              {counter === 1 ? (
+                <Remove disabled />
+              ) : (
+                <Remove onClick={() => dispatch(decrement())} />
+              )}
+
+              <Amount>{counter}</Amount>
+              <Add onClick={() => dispatch(increment())} />
             </AmountContainer>
-            <Button> ADD TO CART </Button>
+            <Button onClick={() => {
+              dispatch(addCart(state))
+              navigate("/cart",{state:state})
+              }}>
+          
+              ADD TO CART
+            </Button>
           </AddContainer>
         </InfoContainer>
       </Wrapper>

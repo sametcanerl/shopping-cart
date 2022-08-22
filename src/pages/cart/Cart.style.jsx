@@ -115,6 +115,7 @@ export const ProductAmountContainer = styled.div`
 display:flex;
 align-items:center;
 margin-bottom: 20px;
+cursor: pointer;
 
 `
 export const ProductAmount = styled.div`

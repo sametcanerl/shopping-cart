@@ -7,7 +7,7 @@ const PopularProducts = () => {
       <Title>POPULAR PRODUCTS</Title>
       <Wrapper>
       {popularProducts.map((item) => (
-        <PopularProduct key={item.id} {...item} />
+        <PopularProduct key={item.id} item={item} />
       ))}
       </Wrapper>
       

@@ -30,8 +30,20 @@ import {
   TopTexts,
   Wrapper,
 } from "./Cart.style";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  decrement,
+  increment,
+} from "../../redux/actions/ProductCounterActions";
+import { removeCart } from "../../redux/actions/cartActions";
+import { useLocation } from "react-router-dom";
 
 const Cart = () => {
+  const cartList = useSelector((state) => state.cartReducer.cartList);
+  const counter = useSelector((state) => state.productCounterReducer.counter);
+  const dispatch = useDispatch();
+  const { state } = useLocation();
+
   return (
     <Container>
       <Wrapper>
@@ -46,7 +58,48 @@ const Cart = () => {
         </Top>
         <Bottom>
           <Info>
-            <Product>
+            {cartList.map((cart) => {
+              return (
+                <>
+                  <Product>
+                    <ProductDetail>
+                      <Image src={cart.img} />
+                      <Details>
+                        <ProductName>
+                          <b>Product:</b> JESSIE THUNDER SHOES
+                        </ProductName>
+                        <ProductId>
+                          <b>ID:</b>9412741283
+                        </ProductId>
+                        <ProductColor color="black" />
+                        <ProductSize>
+                          <b>Size:</b>40
+                        </ProductSize>
+                      </Details>
+                    </ProductDetail>
+                    <PriceDetail>
+                      <ProductAmountContainer>
+                        {counter === 1 ? (
+                          <Remove
+                            onClick={() => dispatch(removeCart(state.id))}
+                          />
+                        ) : (
+                          <Remove onClick={() => dispatch(decrement())} />
+                        )}
+
+                        <ProductAmount>{counter}</ProductAmount>
+                        <Add onClick={() => dispatch(increment())} />
+                      </ProductAmountContainer>
+                      <ProductPrice>30 $ </ProductPrice>
+                    </PriceDetail>
+                    <ProductDetail></ProductDetail>
+                  </Product>
+                  <Hr />
+                </>
+              );
+            })}
+
+            {/* <Product>
               <ProductDetail>
                 <Image src="https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1614188818-TD1MTHU_SHOE_ANGLE_GLOBAL_MENS_TREE_DASHERS_THUNDER_b01b1013-cd8d-48e7-bed9-52db26515dc4.png?crop=1xw:1.00xh;center,top&resize=480%3A%2A" />
                 <Details>
@@ -74,37 +127,7 @@ const Cart = () => {
                 <ProductPrice>30 $ </ProductPrice>
               </PriceDetail>
               <ProductDetail></ProductDetail>
-            </Product>
-            <Hr />
-            <Product>
-              <ProductDetail>
-                <Image src="https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1614188818-TD1MTHU_SHOE_ANGLE_GLOBAL_MENS_TREE_DASHERS_THUNDER_b01b1013-cd8d-48e7-bed9-52db26515dc4.png?crop=1xw:1.00xh;center,top&resize=480%3A%2A" />
-                <Details>
-                  <ProductName>
-                    {" "}
-                    <b>Product:</b> JESSIE THUNDER SHOES
-                  </ProductName>
-                  <ProductId>
-                    {" "}
-                    <b>ID:</b>9412741283
-                  </ProductId>
-                  <ProductColor color="black" />
-                  <ProductSize>
-                    {" "}
-                    <b>Size:</b>40
-                  </ProductSize>
-                </Details>
-              </ProductDetail>
-              <PriceDetail>
-                <ProductAmountContainer>
-                  <Remove />
-                  <ProductAmount>2</ProductAmount>
-                  <Add />
-                </ProductAmountContainer>
-                <ProductPrice>30 $ </ProductPrice>
-              </PriceDetail>
-              <ProductDetail></ProductDetail>
-            </Product>
+            </Product> */}
           </Info>
           <Summary>
             <SummaryTitle>ORDER SUMMART</SummaryTitle>
