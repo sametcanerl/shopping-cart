@@ -39,16 +39,20 @@ const dataSlice = createSlice({
   initialState,
   reducers: {
     addProduct: (state, action) => {
-      const cart = state.products.find((cart) => cart.id === action.payload.id);
+      const cart = state.products.find(
+        (cart) =>
+          cart.id === action.payload.id &&
+          cart.color === action.payload.color &&
+          cart.size === action.payload.size
+      );
       if (!cart) {
         state.bagQuantity += 1;
         state.products.push(action.payload);
 
         state.total += action.payload.price * action.payload.quantity;
-      }else{
-        cart.quantity += action.payload.quantity
+      } else {
+        cart.quantity += action.payload.quantity;
       }
-
     },
   },
   extraReducers: {
