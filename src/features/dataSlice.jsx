@@ -1,10 +1,13 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { sliderItems, categories } from "../data";
+import { sliderItems, categories, popularProducts } from "../data";
 
 const initialState = {
-  newsliderItems: [],
+  // slidersItems: [],
   categories: [],
-
+  popularProducts: [],
+  products: [],
+  cartQuantity: 0,
+  total: 0,
 };
 
 //Redux Toolkit ve Thunk bilgilerini pekiştirmek  amacı için kullanılmıştır.
@@ -12,15 +15,22 @@ const initialState = {
 //İlgili Data'yı ilgili componentte direkt import edip kullanabilirdik.
 export const getSlidersItems = createAsyncThunk(
   "slidersItems/getSlidersItems",
-   () => {
+  () => {
     return sliderItems;
   }
 );
 
 export const getCategories = createAsyncThunk(
   "categories/getCategories",
-   () => {
+  () => {
     return categories;
+  }
+);
+
+export const getPopularProducts = createAsyncThunk(
+  "popularProducts/getPopularProducts",
+  () => {
+    return popularProducts;
   }
 );
 
@@ -28,10 +38,13 @@ const dataSlice = createSlice({
   name: "data",
   initialState,
   reducers: {
-    clearNewData: (state) => {
-      state.sliderItems = [];
-      state.categories = [];
+    addProduct: (state, action) => {
+      state.cartQuantity += 1;
+      state.products.push(action.payload);
+
+      state.total += action.payload.price * action.payload.quantity;
     },
+   
   },
   extraReducers: {
     [getSlidersItems.fulfilled]: (state, { payload }) => {
@@ -40,9 +53,12 @@ const dataSlice = createSlice({
     [getCategories.fulfilled]: (state, { payload }) => {
       state.categories = payload;
     },
+    [getPopularProducts.fulfilled]: (state, { payload }) => {
+      state.popularProducts = payload;
+    },
   },
 });
 
-export const { clearNewData } = dataSlice.actions;
+export const { addProduct } = dataSlice.actions;
 
 export default dataSlice.reducer;

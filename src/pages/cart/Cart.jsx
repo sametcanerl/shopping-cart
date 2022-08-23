@@ -30,87 +30,76 @@ import {
   TopTexts,
   Wrapper,
 } from "./Cart.style";
+import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router";
+import { addProduct } from "../../features/dataSlice";
+import { useState } from "react";
 
 const Cart = () => {
+  const navigate = useNavigate();
+  const products = useSelector((state) => state.data.products);
+
+  const total = useSelector((state) => state.data.total);
+  const cartQuantity = useSelector((state) => state.data.cartQuantity);
+
+
+
   return (
     <Container>
       <Wrapper>
         <Title> YOUR BAG</Title>
         <Top>
-          <TopButton>CONTINUE SHOPPING</TopButton>
+          <TopButton onClick={() => navigate("/")}>CONTINUE SHOPPING</TopButton>
           <TopTexts>
-            <TopText>Shopping Bag(2)</TopText>
+            <TopText>Shopping Bag({cartQuantity})</TopText>
             <TopText> Your Wishlist (0) </TopText>
           </TopTexts>
-          <TopButton type="filled">CHECKOUT NOW</TopButton>
+          <TopButton onClick={() => navigate("/comingsoon")} type="filled">
+            CHECKOUT NOW
+          </TopButton>
         </Top>
         <Bottom>
           <Info>
-            <Product>
-              <ProductDetail>
-                <Image src="https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1614188818-TD1MTHU_SHOE_ANGLE_GLOBAL_MENS_TREE_DASHERS_THUNDER_b01b1013-cd8d-48e7-bed9-52db26515dc4.png?crop=1xw:1.00xh;center,top&resize=480%3A%2A" />
-                <Details>
-                  <ProductName>
-                    {" "}
-                    <b>Product:</b> JESSIE THUNDER SHOES
-                  </ProductName>
-                  <ProductId>
-                    {" "}
-                    <b>ID:</b>9412741283
-                  </ProductId>
-                  <ProductColor color="black" />
-                  <ProductSize>
-                    {" "}
-                    <b>Size:</b>40
-                  </ProductSize>
-                </Details>
-              </ProductDetail>
-              <PriceDetail>
-                <ProductAmountContainer>
-                  <Remove />
-                  <ProductAmount>2</ProductAmount>
-                  <Add />
-                </ProductAmountContainer>
-                <ProductPrice>30 $ </ProductPrice>
-              </PriceDetail>
-              <ProductDetail></ProductDetail>
-            </Product>
+            {products?.map((product) => {
+              const { title, img, quantity, size, color, price, id } = product;
+
+              return (
+                <Product key={id}>
+                  <ProductDetail>
+                    <Image src={img} />
+                    <Details>
+                      <ProductName>
+                        {" "}
+                        <b>Product:</b> {title}
+                      </ProductName>
+
+                      <ProductColor color={color} />
+                      <ProductSize>
+                        {" "}
+                        <b>Size:</b>
+                        {size}
+                      </ProductSize>
+                    </Details>
+                  </ProductDetail>
+                  <PriceDetail>
+                    <ProductAmountContainer>
+                      <Remove />
+                      <ProductAmount>{quantity}</ProductAmount>
+                      <Add  />
+                    </ProductAmountContainer>
+                    <ProductPrice>$ {price * quantity} </ProductPrice>
+                  </PriceDetail>
+                  <ProductDetail></ProductDetail>
+                </Product>
+              );
+            })}
             <Hr />
-            <Product>
-              <ProductDetail>
-                <Image src="https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1614188818-TD1MTHU_SHOE_ANGLE_GLOBAL_MENS_TREE_DASHERS_THUNDER_b01b1013-cd8d-48e7-bed9-52db26515dc4.png?crop=1xw:1.00xh;center,top&resize=480%3A%2A" />
-                <Details>
-                  <ProductName>
-                    {" "}
-                    <b>Product:</b> JESSIE THUNDER SHOES
-                  </ProductName>
-                  <ProductId>
-                    {" "}
-                    <b>ID:</b>9412741283
-                  </ProductId>
-                  <ProductColor color="black" />
-                  <ProductSize>
-                    {" "}
-                    <b>Size:</b>40
-                  </ProductSize>
-                </Details>
-              </ProductDetail>
-              <PriceDetail>
-                <ProductAmountContainer>
-                  <Remove />
-                  <ProductAmount>2</ProductAmount>
-                  <Add />
-                </ProductAmountContainer>
-                <ProductPrice>30 $ </ProductPrice>
-              </PriceDetail>
-              <ProductDetail></ProductDetail>
-            </Product>
           </Info>
           <Summary>
             <SummaryTitle>ORDER SUMMART</SummaryTitle>
             <SummaryItem>
               <SummaryItemText>Subtotal</SummaryItemText>
-              <SummaryItemPrice>$ 80</SummaryItemPrice>
+              <SummaryItemPrice>$ {total} </SummaryItemPrice>
             </SummaryItem>
             <SummaryItem>
               <SummaryItemText>Estimated Shipping</SummaryItemText>
@@ -122,9 +111,9 @@ const Cart = () => {
             </SummaryItem>
             <SummaryItem type="total">
               <SummaryItemText>Total</SummaryItemText>
-              <SummaryItemPrice>$ 80</SummaryItemPrice>
+              <SummaryItemPrice>$ {total}</SummaryItemPrice>
             </SummaryItem>
-            <Button>CHECK OUT</Button>
+            <Button onClick={() => navigate("/comingsoon")}>CHECK OUT</Button>
           </Summary>
         </Bottom>
       </Wrapper>

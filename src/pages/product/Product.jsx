@@ -1,4 +1,3 @@
-import Navbar from "../../components/navbar/Navbar";
 import { Remove, Add } from "@material-ui/icons";
 import {
   AddContainer,
@@ -22,11 +21,19 @@ import {
   Title,
   Wrapper,
 } from "./Product.style";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { addProduct } from "../../features/dataSlice";
 const Product = () => {
+  const [quantity, setQuantity] = useState(1);
+  const [filter, setFilter] = useState({
+    color:"Black",
+    size:"M",
+  });
+  const navigate = useNavigate();
   const { state } = useLocation();
-  const [filter, setFilter] = useState({});
+  const dispatch = useDispatch();
   const handleFilters = (e) => {
     const { name, value } = e.target;
     setFilter({
@@ -35,19 +42,26 @@ const Product = () => {
     });
   };
 
+  const handleQuantity = (type) => {
+    type === "dec"
+      ? quantity > 1 && setQuantity((prev) => prev - 1)
+      : setQuantity((prev) => prev + 1);
+  };
+
+  const handleClick = () => {
+    dispatch(addProduct({ ...state, quantity, ...filter }));
+    navigate("/cart");
+  };
   return (
     <Container>
       <Wrapper>
         <ImgContainer>
-          <Image src={state} />
+          <Image src={state.img} />
         </ImgContainer>
         <InfoContainer>
-          <Title>Lorem, ipsum.</Title>
-          <Desc>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae,
-            vero.
-          </Desc>
-          <Price>20 $ </Price>
+          <Title>{state.title}</Title>
+          <Desc>{state.desc}</Desc>
+          <Price>{state.price} $ </Price>
           <FilterContainer>
             <Filter name="color" onChange={handleFilters}>
               <FilterTitle>Color:</FilterTitle>
@@ -67,6 +81,7 @@ const Product = () => {
                 hidden
               />
               <FilterColor
+               
                 name="color"
                 type="radio"
                 id="Red"
@@ -82,7 +97,7 @@ const Product = () => {
               <FilterSize name="size" onChange={handleFilters}>
                 <FilterSizeOption>XS</FilterSizeOption>
                 <FilterSizeOption>S</FilterSizeOption>
-                <FilterSizeOption>M</FilterSizeOption>
+                <FilterSizeOption >M</FilterSizeOption>
                 <FilterSizeOption>L</FilterSizeOption>
                 <FilterSizeOption>XL</FilterSizeOption>
               </FilterSize>
@@ -90,11 +105,11 @@ const Product = () => {
           </FilterContainer>
           <AddContainer>
             <AmountContainer>
-              <Remove />
-              <Amount>1</Amount>
-              <Add />
+              <Remove onClick={() => handleQuantity("dec")} />
+              <Amount> {quantity}</Amount>
+              <Add onClick={() => handleQuantity("inc")} />
             </AmountContainer>
-            <Button> ADD TO CART </Button>
+            <Button onClick={handleClick}> ADD TO CART </Button>
           </AddContainer>
         </InfoContainer>
       </Wrapper>

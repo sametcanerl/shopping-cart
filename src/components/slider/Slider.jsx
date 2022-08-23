@@ -28,7 +28,7 @@ const {sliderItems} = useSelector((state)=>state.data)
 
 useEffect(() => {
  dispatch(getSlidersItems())
-}, [])
+}, [dispatch])
 
 
 

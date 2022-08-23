@@ -57,13 +57,17 @@ export const FilterColorLabel = styled.label`
   border-radius:50%;
   background-color: ${(props) => props.htmlFor};
   margin:0 5px;
+  cursor: pointer;
 `;
 
 export const FilterSize = styled.select`
   margin-left: 10px;
   padding: 5px;
+  cursor: pointer;
 `;
-export const FilterSizeOption = styled.option``;
+export const FilterSizeOption = styled.option`
+
+`;
 export const AddContainer = styled.div`
   width: 50%;
   display: flex;
@@ -76,6 +80,7 @@ export const AmountContainer = styled.div`
   font-weight: 700;
   align-items: center;
   ${sm({ justifyContent: "center" })}
+  cursor: pointer;
 `;
 export const Amount = styled.span`
   width: 30px;

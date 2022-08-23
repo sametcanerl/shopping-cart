@@ -70,11 +70,12 @@ font-size: ${props=>props.type === "total" && "24px"};
 export const SummaryItemText = styled.span``
 export const SummaryItemPrice = styled.span``
 export const Button = styled.button`
-width: 100px;
-padding: 10px;
+
+padding: 15px;
 background-color:black;
 color:white;
 font-weight: 600;
+cursor: pointer;
 `
 export const Product = styled.div`
 display:flex;

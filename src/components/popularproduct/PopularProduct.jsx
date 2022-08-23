@@ -3,19 +3,20 @@ import {
   SearchOutlined,
   FavoriteBorderOutlined,
 } from "@material-ui/icons";
-import {  Container, Icon, Image, Info } from "./PopularProduct.style";
-import {useNavigate} from "react-router-dom";
-const PopularProduct = ({ img }) => {
-  const navigate = useNavigate()
+import { Container, Icon, Image, Info } from "./PopularProduct.style";
+import { useNavigate } from "react-router-dom";
+const PopularProduct = ({ item }) => {
+  const { img } = item;
+  const navigate = useNavigate();
   return (
     <Container>
       <Image src={img} />
       <Info>
+        
         <Icon>
-          <AddShoppingCartOutlined />
-        </Icon>
-        <Icon>
-          <SearchOutlined onClick={()=>navigate("/product",{state:img})} />
+          <SearchOutlined
+            onClick={() => navigate("/product", { state: item })}
+          />
         </Icon>
         <Icon>
           <FavoriteBorderOutlined />
