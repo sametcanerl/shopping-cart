@@ -54,6 +54,41 @@ const dataSlice = createSlice({
         cart.quantity += action.payload.quantity;
       }
     },
+    cartInc: (state, action) => {
+      const cart = state.products.find(
+        (cart) =>
+          cart.id === action.payload.id &&
+          cart.color === action.payload.color &&
+          cart.size === action.payload.size
+      );
+      if (cart) {
+        cart.quantity += 1;
+      }
+    },
+    cartDec: (state, action) => {
+      const cart = state.products.find(
+        (cart) =>
+          cart.id === action.payload.id &&
+          cart.color === action.payload.color &&
+          cart.size === action.payload.size
+      );
+      const newCart = state.products.filter(
+        (cart) =>
+          cart.id !== action.payload.id ||
+          cart.color !== action.payload.color ||
+          cart.size !== action.payload.size
+      );
+      if (cart) {
+        if (cart.quantity === 1) {
+          const confirm = window.confirm("Can You Delete?");
+          if (confirm) {
+            state.products = newCart;
+          }
+        } else {
+          cart.quantity -= 1;
+        }
+      }
+    },
   },
   extraReducers: {
     [getSlidersItems.fulfilled]: (state, { payload }) => {
@@ -68,6 +103,6 @@ const dataSlice = createSlice({
   },
 });
 
-export const { addProduct } = dataSlice.actions;
+export const { addProduct, cartInc, cartDec } = dataSlice.actions;
 
 export default dataSlice.reducer;

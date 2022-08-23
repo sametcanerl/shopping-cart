@@ -32,20 +32,23 @@ import {
 } from "./Cart.style";
 import { useSelector, useDispatch } from "react-redux";
 import { useLocation, useNavigate } from "react-router";
-import { addProduct } from "../../features/dataSlice";
-import { useState } from "react";
+import { cartDec, cartInc } from "../../features/dataSlice";
 
 const Cart = () => {
   const navigate = useNavigate();
   const products = useSelector((state) => state.data.products);
-  const { state } = useLocation();
+  const dispatch = useDispatch();
 
   const total = useSelector((state) => state.data.total);
   const bagQuantity = useSelector((state) => state.data.bagQuantity);
-  
-const handleClick = ()=>{
 
-}
+  const handleClick = (type, product) => {
+    if (type === "inc") {
+      dispatch(cartInc(product));
+    }else{
+      dispatch(cartDec(product))
+    }
+  };
   return (
     <Container>
       <Wrapper>
@@ -85,9 +88,9 @@ const handleClick = ()=>{
                   </ProductDetail>
                   <PriceDetail>
                     <ProductAmountContainer>
-                      <Remove />
+                      <Remove onClick={() => handleClick("dec", product)}  />
                       <ProductAmount>{quantity}</ProductAmount>
-                      <Add onClick={()=>handleClick} />
+                      <Add onClick={() => handleClick("inc", product)} />
                     </ProductAmountContainer>
                     <ProductPrice>$ {price * quantity} </ProductPrice>
                   </PriceDetail>
