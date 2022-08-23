@@ -31,19 +31,21 @@ import {
   Wrapper,
 } from "./Cart.style";
 import { useSelector, useDispatch } from "react-redux";
-import { useNavigate } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 import { addProduct } from "../../features/dataSlice";
 import { useState } from "react";
 
 const Cart = () => {
   const navigate = useNavigate();
   const products = useSelector((state) => state.data.products);
+  const { state } = useLocation();
 
   const total = useSelector((state) => state.data.total);
-  const cartQuantity = useSelector((state) => state.data.cartQuantity);
+  const bagQuantity = useSelector((state) => state.data.bagQuantity);
+  
+const handleClick = ()=>{
 
-
-
+}
   return (
     <Container>
       <Wrapper>
@@ -51,7 +53,7 @@ const Cart = () => {
         <Top>
           <TopButton onClick={() => navigate("/")}>CONTINUE SHOPPING</TopButton>
           <TopTexts>
-            <TopText>Shopping Bag({cartQuantity})</TopText>
+            <TopText>Shopping Bag({bagQuantity})</TopText>
             <TopText> Your Wishlist (0) </TopText>
           </TopTexts>
           <TopButton onClick={() => navigate("/comingsoon")} type="filled">
@@ -85,7 +87,7 @@ const Cart = () => {
                     <ProductAmountContainer>
                       <Remove />
                       <ProductAmount>{quantity}</ProductAmount>
-                      <Add  />
+                      <Add onClick={()=>handleClick} />
                     </ProductAmountContainer>
                     <ProductPrice>$ {price * quantity} </ProductPrice>
                   </PriceDetail>

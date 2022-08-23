@@ -50,7 +50,7 @@ const Product = () => {
 
   const handleClick = () => {
     dispatch(addProduct({ ...state, quantity, ...filter }));
-    navigate("/cart");
+    navigate("/cart",{state:state});
   };
   return (
     <Container>
