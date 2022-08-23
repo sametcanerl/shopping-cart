@@ -14,11 +14,25 @@ import {
   ArrowBackIosOutlined,
   ArrowForwardIosOutlined,
 } from "@material-ui/icons";
-import { useState } from "react";
-import { sliderItems } from "../../data";
-import {useNavigate} from "react-router-dom"
+import { useEffect, useState } from "react";
 
+import {useNavigate} from "react-router-dom"
+import {useDispatch,useSelector} from "react-redux"
+import { getSlidersItems } from "../../features/dataSlice";
 const Slider = () => {
+//Redux Toolkit ve Thunk bilgilerini pekiştirmek  amacı için kullanılmıştır.
+//API'den veri çekme similasyonu gibi düşünülebilir.
+//İlgili Data'yı ilgili componentte direkt import edip kullanabilirdik.
+const dispatch = useDispatch()
+const {sliderItems} = useSelector((state)=>state.data)
+
+useEffect(() => {
+ dispatch(getSlidersItems())
+}, [])
+
+
+
+
   const [slideIndex, setSlideIndex] = useState(0);
   const navigate = useNavigate()
   const handleClick = (direction) => {
@@ -34,7 +48,7 @@ const Slider = () => {
         <ArrowBackIosOutlined />
       </Arrow>
       <Wrapper slideIndex = {slideIndex} >
-        {sliderItems.map((item) => {
+        {sliderItems?.map((item) => {
             const {id,img,title,desc,bg} = item
           return (
             <Slide key={id} bg={bg}>

@@ -34,7 +34,7 @@ const Product = () => {
       [name]: value,
     });
   };
-  console.log(filter);
+
   return (
     <Container>
       <Wrapper>
