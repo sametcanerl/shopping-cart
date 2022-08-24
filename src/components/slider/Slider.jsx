@@ -28,7 +28,7 @@ const Slider = () => {
   //İlgili Data'yı ilgili componentte direkt import edip kullanabilirdik.
   const dispatch = useDispatch();
   const { sliderItems } = useSelector((state) => state.data);
-console.log(slideIndex);
+
   useEffect(() => {
     dispatch(getSlidersItems());
   }, [dispatch]);

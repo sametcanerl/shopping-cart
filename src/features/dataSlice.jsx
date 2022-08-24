@@ -47,7 +47,7 @@ const dataSlice = createSlice({
       );
       if (!cart) {
         state.bagQuantity += 1;
-        state.products.push(action.payload);
+        state.products.unshift(action.payload);
 
         state.total += action.payload.price * action.payload.quantity;
       } else {

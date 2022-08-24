@@ -1,6 +1,11 @@
+import { useEffect } from "react";
 import { Button, Container, Form, Input, Link, Title, Wrapper } from "./Login.style";
 
 const Login = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    
+  }, []);
   return (
     <Container>
       <Wrapper>

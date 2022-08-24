@@ -9,7 +9,6 @@ import {
   Filter,
   FilterColor,
   FilterColorLabel,
- 
   FilterContainer,
   FilterSize,
   FilterSizeOption,
@@ -22,14 +21,14 @@ import {
   Wrapper,
 } from "./Product.style";
 import { useLocation, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { addProduct } from "../../features/dataSlice";
 const Product = () => {
   const [quantity, setQuantity] = useState(1);
   const [filter, setFilter] = useState({
-    color:"Black",
-    size:"M",
+    color: "Black",
+    size: "M",
   });
   const navigate = useNavigate();
   const { state } = useLocation();
@@ -41,7 +40,9 @@ const Product = () => {
       [name]: value,
     });
   };
-
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const handleQuantity = (type) => {
     type === "dec"
       ? quantity > 1 && setQuantity((prev) => prev - 1)
@@ -50,7 +51,7 @@ const Product = () => {
 
   const handleClick = () => {
     dispatch(addProduct({ ...state, quantity, ...filter }));
-    navigate("/cart",{state:state});
+    navigate("/cart", { state: state });
   };
   return (
     <Container>
@@ -64,8 +65,6 @@ const Product = () => {
           <Price>{state.price} $ </Price>
           <FilterContainer>
             <Filter name="color" onChange={handleFilters}>
-              
-
               <FilterColor
                 name="color"
                 type="radio"
@@ -81,7 +80,6 @@ const Product = () => {
                 hidden
               />
               <FilterColor
-               
                 name="color"
                 type="radio"
                 id="Red"
@@ -97,7 +95,7 @@ const Product = () => {
               <FilterSize name="size" onChange={handleFilters}>
                 <FilterSizeOption>XS</FilterSizeOption>
                 <FilterSizeOption>S</FilterSizeOption>
-                <FilterSizeOption >M</FilterSizeOption>
+                <FilterSizeOption>M</FilterSizeOption>
                 <FilterSizeOption>L</FilterSizeOption>
                 <FilterSizeOption>XL</FilterSizeOption>
               </FilterSize>

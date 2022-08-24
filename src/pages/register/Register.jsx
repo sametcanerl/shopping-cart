@@ -1,8 +1,13 @@
 
 
+import { useEffect } from 'react';
 import { Agreement, Button, Container, Form, Input, Title, Wrapper } from './Register.style'
 
 const Register = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    
+  }, []);
   return (
     <Container>
         <Wrapper>

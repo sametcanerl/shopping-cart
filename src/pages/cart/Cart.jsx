@@ -33,6 +33,7 @@ import {
 import { useSelector, useDispatch } from "react-redux";
 import {  useNavigate } from "react-router";
 import { cartDec, cartInc } from "../../features/dataSlice";
+import { useEffect } from "react";
 
 const Cart = () => {
   const navigate = useNavigate();
@@ -41,6 +42,10 @@ const Cart = () => {
 
   const total = useSelector((state) => state.data.total);
   const bagQuantity = useSelector((state) => state.data.bagQuantity);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    
+  }, []);
 
   const handleClick = (type, product) => {
     if (type === "inc") {
