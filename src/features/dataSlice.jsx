@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { sliderItems, categories, popularProducts } from "../data";
-import { current } from "@reduxjs/toolkit";
+
 const initialState = {
   // slidersItems: [],
   categories: [],
@@ -64,6 +64,7 @@ const dataSlice = createSlice({
       if (cart) {
         cart.quantity += 1;
       }
+      state.total += action.payload.price
     },
     cartDec: (state, action) => {
       const cart = state.products.find(
@@ -82,14 +83,17 @@ const dataSlice = createSlice({
         if (cart.quantity === 1) {
           const confirm = window.confirm("Can You Delete?");
           if (confirm) {
-            state.total -= action.payload.price * action.payload.quantity
+            state.total -= action.payload.price *  action.payload.quantity
             state.bagQuantity -=1
             state.products = newCart;
+          
           }
         } else {
           cart.quantity -= 1;
+          state.total -= action.payload.price
         }
       }
+     
     },
   },
   extraReducers: {
