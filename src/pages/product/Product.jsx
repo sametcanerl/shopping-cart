@@ -9,7 +9,7 @@ import {
   Filter,
   FilterColor,
   FilterColorLabel,
-  FilterColorOption,
+ 
   FilterContainer,
   FilterSize,
   FilterSizeOption,
@@ -64,7 +64,7 @@ const Product = () => {
           <Price>{state.price} $ </Price>
           <FilterContainer>
             <Filter name="color" onChange={handleFilters}>
-              <FilterTitle>Color:</FilterTitle>
+              
 
               <FilterColor
                 name="color"

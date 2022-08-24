@@ -1,4 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Announcement from "../components/announcement/Announcement";
 import Footer from "../components/footer/Footer";
 import Navbar from "../components/navbar/Navbar";
 import Cart from "../pages/cart/Cart";
@@ -12,6 +13,7 @@ const AppRouter = () => {
   return (
     <BrowserRouter>
       <Navbar />
+      <Announcement/>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/register" element={<Register />} />

@@ -20,8 +20,9 @@ export const Desc = styled.p`
 
 export const SocialContainer = styled.div`
   display: flex;
+  cursor: pointer;
 `;
-export const SocialIcon = styled.div`
+export const SocialIcon = styled.a`
   width: 40px;
   height: 40px;
   border-radius: 50%;

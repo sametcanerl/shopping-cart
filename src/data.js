@@ -13,6 +13,7 @@ export const sliderItems = [
       desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS.",
       bg: "fcf1ed",
     },
+    
     {
       id: 3,
       img: "https://i.ibb.co/cXFnLLV/3.png",
@@ -34,6 +35,7 @@ export const sliderItems = [
       img: "https://images.pexels.com/photos/2983464/pexels-photo-2983464.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
       title: "LOUNGEWEAR LOVE",
     },
+    
     {
       id: 3,
       img: "https://images.pexels.com/photos/5480696/pexels-photo-5480696.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
@@ -50,9 +52,10 @@ export const sliderItems = [
       price:20,
       
     },
+ 
     {
       id:2,
-      img:"https://cdn.shopify.com/s/files/1/0101/4832/products/Angela_Natural_Tee.png?v=1606780388",
+      img:"https://i.ibb.co/v4BR7hx/dericeket-preview-rev-1.png",
       title:"Lorem2",
       desc:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae, vero.",
       price:10,
@@ -64,6 +67,7 @@ export const sliderItems = [
       desc:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae, vero.",
       price:14,
     },
+
     {
       id:4,
       img:"https://www.burdastyle.com/pub/media/catalog/product/cache/7bd3727382ce0a860b68816435d76e26/107/BUS-PAT-BURTE-1320516/1170x1470_BS_2016_05_132_front.png",
@@ -87,7 +91,7 @@ export const sliderItems = [
     },
     {
       id:7,
-      img:"https://www.vintageindustries.nl/download_front/qympzk1762/2217_Arrow_Jacket_Forest.png",
+      img:"https://i.ibb.co/qpVxzr8/urban-outfitters-levi-men-jean-shorts-2021-500x500-preview-rev-1.png",
       title:"Lorem7",
       desc:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae, vero.",
       price:22,

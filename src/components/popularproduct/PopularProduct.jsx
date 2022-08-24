@@ -1,8 +1,4 @@
-import {
-  AddShoppingCartOutlined,
-  SearchOutlined,
-  FavoriteBorderOutlined,
-} from "@material-ui/icons";
+import { SearchOutlined, FavoriteBorderOutlined } from "@material-ui/icons";
 import { Container, Icon, Image, Info } from "./PopularProduct.style";
 import { useNavigate } from "react-router-dom";
 const PopularProduct = ({ item }) => {
@@ -12,7 +8,6 @@ const PopularProduct = ({ item }) => {
     <Container>
       <Image src={img} />
       <Info>
-        
         <Icon>
           <SearchOutlined
             onClick={() => navigate("/product", { state: item })}
