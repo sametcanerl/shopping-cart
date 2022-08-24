@@ -21,7 +21,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getSlidersItems } from "../../features/dataSlice";
 const Slider = () => {
   const [slideIndex, setSlideIndex] = useState(0);
-
+  const [disaple, setDisaple] = useState(false);
   const navigate = useNavigate();
   //Redux Toolkit ve Thunk bilgilerini pekiştirmek  amacı için kullanılmıştır.
   //API'den veri çekme similasyonu gibi düşünülebilir.
@@ -34,13 +34,22 @@ const Slider = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setSlideIndex(prev=> prev ===  (sliderItems.length - 1) ? 0 : prev +1 )
+    const slider = setInterval(() => {
+      setSlideIndex((prev) => (prev === sliderItems.length - 1 ? 0 : prev + 1));
+    
     }, 3000);
-    return()=> {
+    return () => {
      
-      clearInterval(interval)}
-  }, [slideIndex,sliderItems]);
+      clearInterval(slider);
+    };
+  }, [slideIndex, sliderItems]);
+
+  useEffect(() => {
+    const buttonDisapled = setInterval(() => {
+      setDisaple(false);
+    }, 1500);
+    return () => clearInterval(buttonDisapled);
+  }, [disaple]);
 
   const handleClick = (direction) => {
     if (direction === "left") {
@@ -48,10 +57,17 @@ const Slider = () => {
     } else {
       setSlideIndex(slideIndex < sliderItems.length - 1 ? slideIndex + 1 : 0);
     }
+    setDisaple(true);
   };
+
+  
   return (
     <Container>
-      <Arrow direction="left" onClick={() => handleClick("left")}>
+      <Arrow
+        disabled={disaple}
+        direction="left"
+        onClick={() => handleClick("left")}
+      >
         <ArrowBackIosOutlined />
       </Arrow>
       <Wrapper slideIndex={slideIndex}>
@@ -73,7 +89,11 @@ const Slider = () => {
           );
         })}
       </Wrapper>
-      <Arrow direction="right" onClick={() => handleClick("right")}>
+      <Arrow
+        disabled={disaple}
+        direction="right"
+        onClick={() => handleClick("right")}
+      >
         <ArrowForwardIosOutlined />
       </Arrow>
     </Container>

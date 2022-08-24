@@ -10,7 +10,7 @@ export const Container = styled.div`
   ${sm({ display: "none" })}
 `;
 
-export const Arrow = styled.div`
+export const Arrow = styled.button`
   width: 50px;
   height: 50px;
   background-color: #fff7f7;

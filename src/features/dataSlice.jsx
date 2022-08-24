@@ -3,8 +3,8 @@ import { sliderItems, categories, popularProducts } from "../data";
 
 const initialState = {
   // slidersItems: [],
-  categories: [],
-  popularProducts: [],
+  // categories: [],
+  // popularProducts: [],
   products: [],
   bagQuantity: 0,
   total: 0,
@@ -15,21 +15,21 @@ const initialState = {
 //İlgili Data'yı ilgili componentte direkt import edip kullanabilirdik.
 export const getSlidersItems = createAsyncThunk(
   "slidersItems/getSlidersItems",
-  () => {
-    return sliderItems;
+  async () => {
+    return  sliderItems;
   }
 );
 
 export const getCategories = createAsyncThunk(
   "categories/getCategories",
-  () => {
+ async () => {
     return categories;
   }
 );
 
 export const getPopularProducts = createAsyncThunk(
   "popularProducts/getPopularProducts",
-  () => {
+  async () => {
     return popularProducts;
   }
 );
