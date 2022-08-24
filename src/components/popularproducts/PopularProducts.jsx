@@ -2,7 +2,7 @@ import { Container, Title, Wrapper } from "./PopularProducts.style";
 // import { popularProducts } from "../../data";
 import PopularProduct from "../popularproduct/PopularProduct";
 import { useDispatch, useSelector } from "react-redux";
-import { getCategories, getPopularProducts } from "../../features/dataSlice";
+import {  getPopularProducts } from "../../features/dataSlice";
 import { useEffect } from "react";
 const PopularProducts = () => {
 

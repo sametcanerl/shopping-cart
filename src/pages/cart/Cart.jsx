@@ -14,7 +14,7 @@ import {
   ProductAmountContainer,
   ProductColor,
   ProductDetail,
-  ProductId,
+ 
   ProductName,
   ProductPrice,
   ProductSize,
@@ -31,7 +31,7 @@ import {
   Wrapper,
 } from "./Cart.style";
 import { useSelector, useDispatch } from "react-redux";
-import { useLocation, useNavigate } from "react-router";
+import {  useNavigate } from "react-router";
 import { cartDec, cartInc } from "../../features/dataSlice";
 
 const Cart = () => {
