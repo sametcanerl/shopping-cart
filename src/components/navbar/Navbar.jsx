@@ -1,8 +1,6 @@
 import { Badge } from "@material-ui/core";
 import { Search, ShoppingCartOutlined } from "@material-ui/icons";
 
-
-
 import {
   Center,
   Container,
@@ -17,10 +15,8 @@ import {
 } from "./Navbar.style";
 import { useSelector } from "react-redux";
 
-
-
 const Navbar = () => {
-  const bagQuantity = useSelector(state=>state.data.bagQuantity)
+  const bagQuantity = useSelector((state) => state.data.bagQuantity);
 
   return (
     <Container>
@@ -33,10 +29,10 @@ const Navbar = () => {
           </SearchContainer>
         </Left>
         <Center>
-          <Logo to="/" >SAMET</Logo>
+          <Logo to="/">SCE</Logo>
         </Center>
         <Right>
-          <MenuItem to="/register" >REGİSTER</MenuItem>
+          <MenuItem to="/register">REGİSTER</MenuItem>
           <MenuItem to="/login">SIGN IN</MenuItem>
           <MenuItem to="/cart">
             <Badge badgeContent={bagQuantity} color="primary">
