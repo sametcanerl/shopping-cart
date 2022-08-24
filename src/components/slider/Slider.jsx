@@ -19,6 +19,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getSlidersItems } from "../../features/dataSlice";
+
 const Slider = () => {
   const [slideIndex, setSlideIndex] = useState(0);
   const [disaple, setDisaple] = useState(false);
@@ -31,19 +32,20 @@ const Slider = () => {
 
   useEffect(() => {
     dispatch(getSlidersItems());
+    console.log("slider");
   }, [dispatch]);
 
   useEffect(() => {
     const slider = setInterval(() => {
+      console.log(`${slideIndex} setInterval `);
       setSlideIndex((prev) => (prev === sliderItems.length - 1 ? 0 : prev + 1));
-    
-    }, 3000);
+    }, 5000);
     return () => {
-     
       clearInterval(slider);
+      console.log(`${slideIndex} clearInterval `);
     };
   }, [slideIndex, sliderItems]);
-
+  console.log(`${slideIndex} comp render `);
   useEffect(() => {
     const buttonDisapled = setInterval(() => {
       setDisaple(false);
@@ -60,7 +62,6 @@ const Slider = () => {
     setDisaple(true);
   };
 
-  
   return (
     <Container>
       <Arrow
