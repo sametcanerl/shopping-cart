@@ -1,3 +1,6 @@
+Amacımız, gerçek bir e-ticaret web sitesi geliştirmekti. Geliştirme aşamasında olan bir projedir. Ana sayfada kullanıcıyı, 5 saniyede bir değişen veya kullanıcının yön butonlarına tıklayarak kendinin değiştirebileceği kategoriler karşılamaktadır. Popüler ürenler kısmında ki ürünlerden herhangi birinin üzerine gelerek, arama çubuğuna tıklayarak ürüne gidebilir, ürünün rengini, bedenini ve miktarını belirleyerek veya belirlemeyerek sepete ekleyebilirsiniz. Beceriler/Araçlar : Redux-Toolkit ,react-router, styled-components, material-ui/icons.
+## [Live Link](https://sce-shopping-cart.netlify.app)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
