@@ -52,6 +52,7 @@ const dataSlice = createSlice({
         state.total += action.payload.price * action.payload.quantity;
       } else {
         cart.quantity += action.payload.quantity;
+        state.total += action.payload.price * action.payload.quantity;
       }
     },
     cartInc: (state, action) => {
