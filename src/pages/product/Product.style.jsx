@@ -49,7 +49,9 @@ export const FilterTitle = styled.span`
   font-size: 20px;
   font-weight: 200;
 `;
-export const FilterColor = styled.input``;
+export const FilterColor = styled.input`
+
+`;
 export const FilterColorLabel = styled.label`
   display:inline-block;
   width:20px;
@@ -58,6 +60,10 @@ export const FilterColorLabel = styled.label`
   background-color: ${(props) => props.htmlFor};
   margin:0 5px;
   cursor: pointer;
+  padding:${(props)=>props.isActive === props.htmlFor ? "2.5px" : "0px" };
+  
+  
+  
 `;
 
 export const FilterSize = styled.select`

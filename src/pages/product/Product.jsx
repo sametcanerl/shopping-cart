@@ -30,9 +30,13 @@ const Product = () => {
     color: "Black",
     size: "M",
   });
+  const [isActive, setIsActive] = useState("");
   const navigate = useNavigate();
   const { state } = useLocation();
   const dispatch = useDispatch();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const handleFilters = (e) => {
     const { name, value } = e.target;
     setFilter({
@@ -40,9 +44,7 @@ const Product = () => {
       [name]: value,
     });
   };
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+
   const handleQuantity = (type) => {
     type === "dec"
       ? quantity > 1 && setQuantity((prev) => prev - 1)
@@ -53,6 +55,10 @@ const Product = () => {
     dispatch(addProduct({ ...state, quantity, ...filter }));
     navigate("/cart", { state: state });
   };
+  const handleisActive = (e) => {
+    setIsActive(e.target.value);
+  };
+
   return (
     <Container>
       <Wrapper>
@@ -71,12 +77,14 @@ const Product = () => {
                 id="Black"
                 value="Black"
                 hidden
+                onClick={(e) => handleisActive(e)}
               />
               <FilterColor
                 name="color"
                 type="radio"
                 id="DarkBlue"
                 value="DarkBlue"
+                onClick={(e) => handleisActive(e)}
                 hidden
               />
               <FilterColor
@@ -85,10 +93,19 @@ const Product = () => {
                 id="Red"
                 value="Red"
                 hidden
+                onClick={(e) => handleisActive(e)}
               />
-              <FilterColorLabel htmlFor="Black"></FilterColorLabel>
-              <FilterColorLabel htmlFor="DarkBlue"></FilterColorLabel>
-              <FilterColorLabel htmlFor="Red"> </FilterColorLabel>
+              <FilterColorLabel
+                isActive={isActive}
+                htmlFor="Black"
+              ></FilterColorLabel>
+              <FilterColorLabel
+                isActive={isActive}
+                htmlFor="DarkBlue"
+              ></FilterColorLabel>
+              <FilterColorLabel isActive={isActive} htmlFor="Red">
+                {" "}
+              </FilterColorLabel>
             </Filter>
             <Filter>
               <FilterTitle>Size:</FilterTitle>
