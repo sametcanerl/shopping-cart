@@ -39,7 +39,7 @@ const Slider = () => {
     const slider = setInterval(() => {
       console.log(`${slideIndex} setInterval `);
       setSlideIndex((prev) => (prev === sliderItems.length - 1 ? 0 : prev + 1));
-    }, 5000);
+    }, 2000);
     return () => {
       clearInterval(slider);
       console.log(`${slideIndex} clearInterval `);
