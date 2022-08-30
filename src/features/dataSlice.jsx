@@ -82,7 +82,7 @@ const dataSlice = createSlice({
       );
       if (cart) {
         if (cart.quantity === 1) {
-          const confirm = window.confirm("Can You Delete?");
+          const confirm = window.confirm("Are you Sure ?");
           if (confirm) {
             state.total -= action.payload.price *  action.payload.quantity
             state.bagQuantity -=1
