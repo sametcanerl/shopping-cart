@@ -32,20 +32,20 @@ const Slider = () => {
 
   useEffect(() => {
     dispatch(getSlidersItems());
-    console.log("slider");
+   
   }, [dispatch]);
 
   useEffect(() => {
     const slider = setInterval(() => {
-      console.log(`${slideIndex} setInterval `);
+   
       setSlideIndex((prev) => (prev === sliderItems.length - 1 ? 0 : prev + 1));
     }, 2000);
     return () => {
       clearInterval(slider);
-      console.log(`${slideIndex} clearInterval `);
+    
     };
   }, [slideIndex, sliderItems]);
-  console.log(`${slideIndex} comp render `);
+
   useEffect(() => {
     const buttonDisapled = setInterval(() => {
       setDisaple(false);

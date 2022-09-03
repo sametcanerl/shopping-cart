@@ -15,21 +15,25 @@ const initialState = {
 //İlgili Data'yı ilgili componentte direkt import edip kullanabilirdik.
 export const getSlidersItems = createAsyncThunk(
   "slidersItems/getSlidersItems",
-  async () => {
-    return  sliderItems;
+ async () => {
+    // const data = await fetch("https://fakestoreapi.com/products")
+    // .then(res=>res.json())
+    // .then(data=>data)
+    // return data;
+    return sliderItems
   }
 );
 
 export const getCategories = createAsyncThunk(
   "categories/getCategories",
- async () => {
+   () => {
     return categories;
   }
 );
 
 export const getPopularProducts = createAsyncThunk(
   "popularProducts/getPopularProducts",
-  async () => {
+  () => {
     return popularProducts;
   }
 );
@@ -65,9 +69,10 @@ const dataSlice = createSlice({
       if (cart) {
         cart.quantity += 1;
       }
-      state.total += action.payload.price
+      state.total += action.payload.price;
     },
     cartDec: (state, action) => {
+      console.log(action.payload);
       const cart = state.products.find(
         (cart) =>
           cart.id === action.payload.id &&
@@ -82,19 +87,17 @@ const dataSlice = createSlice({
       );
       if (cart) {
         if (cart.quantity === 1) {
-          const confirm = window.confirm("Are you Sure ?");
+          const confirm = window.confirm("Are You Sure ?");
           if (confirm) {
-            state.total -= action.payload.price *  action.payload.quantity
-            state.bagQuantity -=1
+            state.total -= action.payload.price * action.payload.quantity;
+            state.bagQuantity -= 1;
             state.products = newCart;
-          
           }
         } else {
           cart.quantity -= 1;
-          state.total -= action.payload.price
+          state.total -= action.payload.price;
         }
       }
-     
     },
   },
   extraReducers: {
